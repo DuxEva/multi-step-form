@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import {
   BrowserModule,
   provideClientHydration,
@@ -12,8 +14,14 @@ import { SelectPlanComponent } from './components/select-plan/select-plan.compon
 import { AddOnsComponent } from './components/add-ons/add-ons.component';
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent, FormPersonnelComponent, SelectPlanComponent, AddOnsComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    SidebarComponent,
+    FormPersonnelComponent,
+    SelectPlanComponent,
+    AddOnsComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })

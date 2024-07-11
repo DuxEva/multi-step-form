@@ -16,6 +16,7 @@
         type="{{ formField.type }}"
         id="{{ formField.id }}"
         name="{{ formField.name }}"
+        [(ngModel)]="formField.value"
         placeholder="{{ formField.placeholder }}"
       />
     </div>

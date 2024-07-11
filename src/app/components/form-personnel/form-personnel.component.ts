@@ -6,6 +6,7 @@ interface FormField {
   type: string;
   name: string;
   placeholder: string;
+  value?: string;
 }
 
 @Component({
@@ -14,13 +15,13 @@ interface FormField {
   styleUrl: './form-personnel.component.css',
 })
 export class FormPersonnelComponent {
-
   formField: FormField = {
     id: '',
     label: '',
     type: '',
     name: '',
     placeholder: '',
+    value: '',
   };
 
   form1fields: FormField[] = [
@@ -30,6 +31,7 @@ export class FormPersonnelComponent {
       type: 'text',
       name: 'name',
       placeholder: 'e.g. Stephen King',
+      value: '',
     },
     {
       id: 'email',
@@ -37,6 +39,7 @@ export class FormPersonnelComponent {
       type: 'email',
       name: 'email',
       placeholder: 'e.g. stephenking@lorem.com',
+      value: '',
     },
     {
       id: 'phone',
@@ -44,11 +47,11 @@ export class FormPersonnelComponent {
       type: 'text',
       name: 'lastName',
       placeholder: 'e.g. +1 234 567 890',
+      value: '',
     },
   ];
 
   nextStep() {
     console.log('Next step');
   }
-
 }
