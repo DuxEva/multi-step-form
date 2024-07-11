@@ -8,9 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FormPersonnelComponent } from './components/form1/form-personnel.component';
+import { SelectPlanComponent } from './components/select-plan/select-plan.component';
+import { AddOnsComponent } from './components/add-ons/add-ons.component';
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent, FormPersonnelComponent],
+  declarations: [AppComponent, SidebarComponent, FormPersonnelComponent, SelectPlanComponent, AddOnsComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
