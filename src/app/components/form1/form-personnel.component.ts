@@ -14,6 +14,7 @@ interface FormField {
   styleUrl: './form-personnel.component.css',
 })
 export class FormPersonnelComponent {
+
   formField: FormField = {
     id: '',
     label: '',
@@ -45,4 +46,9 @@ export class FormPersonnelComponent {
       placeholder: 'e.g. +1 234 567 890',
     },
   ];
+
+  nextStep() {
+    console.log('Next step');
+  }
+
 }
