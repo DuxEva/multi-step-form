@@ -17,6 +17,9 @@ module.exports = {
           1: "#9699AA",
           2: "#D6D9E6",
         },
+        purple: {
+          1: "#483EFF",
+        },
       },
     },
   },
