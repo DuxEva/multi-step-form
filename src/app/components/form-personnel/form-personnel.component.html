@@ -1,6 +1,6 @@
 <div class="font-ubuntu max-md:p-2">
   <h1
-    class="text-4xl max-md:text-3xl font-bold text-denim-1 font-ubuntu mt-5 max-md:mt-2"
+    class="text-4xl max-sm:text-3xl max-md:text-4xl font-bold text-denim-1 font-ubuntu mt-5 max-sm:mt-4 max-md:mt-2"
   >
     Personal info
   </h1>
@@ -9,12 +9,12 @@
   </p>
   <form [formGroup]="form!" class="mt-5" action="">
     @for (formField of form1fields; track $index) {
-    <div class="mb-5 max-md:mb-3">
+    <div class="mb-5 max-sm:mb-3 max-md:mb-6">
       <label class="block mb-3 text-denim-1" for="firstName">
         {{ formField.label }}
       </label>
       <input
-        class="outline-none border-2 w-full px-2 py-3 rounded-md max-sm:placeholder:text-sm placeholder:text-lg placeholder:font-semibold text-xl"
+        class="outline-none border-2 w-full px-2 py-3 max-md:py-4 rounded-md max-sm:placeholder:text-sm placeholder:text-lg placeholder:font-semibold text-xl"
         [type]="formField.type"
         [id]="formField.id"
         [name]="formField.name"
