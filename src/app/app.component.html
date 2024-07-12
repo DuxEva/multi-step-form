@@ -2,7 +2,7 @@
   class="flex justify-center items-center w-full h-screen bg-skyBlue-1 relative"
 >
   <div
-    class="flex max-md:flex-col max-md:items-center max-md:gap-0 gap-20 w-[70%] max-lg:w-[90%] max-md:w-full max-md:h-full border bg-white max-md:bg-skyBlue-1 rounded-2xl shadow-lg p-5 max-md:p-0"
+    class="flex max-md:flex-col max-md:items-center max-md:gap-0 max-lg:gap-10 gap-20 w-[70%] max-lg:w-[90%] max-md:w-full max-md:h-full border bg-white max-md:bg-skyBlue-1 rounded-2xl shadow-lg p-5 max-md:p-0"
   >
     <div class="w-[30%] max-md:h-52 max-md:w-full">
       <sidebar></sidebar>
@@ -14,9 +14,9 @@
         class="max-md:w-full bg-white max-md:rounded-lg max-md:shadow-lg max-md:border-2"
       >
         <form-personnel *ngIf="counter === 1"></form-personnel>
-        <!-- <select-plan *ngIf="counter === 2"></select-plan> -->
-        <!-- <add-ons *ngIf="counter === 3"></add-ons> -->
-        <!-- <p *ngIf="counter === 4">thenk you</p> -->
+        <select-plan *ngIf="counter === 2"></select-plan>
+        <add-ons *ngIf="counter === 3"></add-ons>
+        <p *ngIf="counter === 4">thenk you</p>
       </div>
       <div
         class="w-full max-md:fixed max-md:bottom-0 max-md:right-0 max-md:h-16 max-md: max-md:bg-white flex items-center"
