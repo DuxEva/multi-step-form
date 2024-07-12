@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { StepCounterService } from './services/step-counter.service';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  counter: number = 0;
+  counter: number = 1;
+  isValidated: boolean = false;
+  @Output() triggerValidation = new EventEmitter<void>();
 
   constructor(
     private stepCounter: StepCounterService,
@@ -18,11 +20,14 @@ export class AppComponent {
   ngOnInit() {
     this.stepCounter.currentStep$.subscribe((step) => {
       this.counter = step;
-      console.log('Current step: ', this.counter);
     });
   }
 
   nextStep() {
+    if (this.counter === 1 && !this.isValidated) {
+      this.triggerValidation.emit();
+      return;
+    }
     this.stepCounter.updateStep(this.counter + 1);
   }
 
@@ -30,8 +35,7 @@ export class AppComponent {
     this.stepCounter.updateStep(this.counter - 1);
   }
 
-  resetStep() {
-    this.stepCounter.updateStep(1);
+  handleIsValidated(isValid: boolean) {
+    this.isValidated = isValid;
   }
-
 }

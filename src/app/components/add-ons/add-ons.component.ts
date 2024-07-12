@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-
-interface AddOn {
-  isChosen: boolean;
-  type: string;
-  description: string;
-  pricePerMonth: string;
-}
+import { ADDON } from '../../../types.common';
 
 @Component({
   selector: 'add-ons',
@@ -13,13 +7,13 @@ interface AddOn {
   styleUrl: './add-ons.component.css',
 })
 export class AddOnsComponent {
-  addOn: AddOn = {
+  addOn: ADDON = {
     isChosen: false,
     type: '',
     description: '',
     pricePerMonth: '',
   };
-  addOns: AddOn[] = [
+  addOns: ADDON[] = [
     {
       isChosen: true,
       type: 'Online service',

@@ -1,54 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
-
-interface FormField {
-  id: string;
-  label: string;
-  type: string;
-  name: string;
-  placeholder: string;
-  value?: string;
-}
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FORMFIELD } from '../../../types.common';
 
 @Component({
   selector: 'form-personnel',
   templateUrl: './form-personnel.component.html',
-  styleUrl: './form-personnel.component.css',
+  styleUrls: ['./form-personnel.component.css'],
 })
 export class FormPersonnelComponent implements OnInit {
   form: FormGroup;
+  @Output() isValidated = new EventEmitter<boolean>();
+  @Input() triggerValidation: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
     });
   }
 
-  ngOnInit() {}
+  ngOnChanges() {
+    this.validate();
+    this.triggerValidation.subscribe(() => {
+      this.validate();
+      this.form.markAllAsTouched();
+    });
+  }
 
-  formField: FormField = {
-    id: '',
-    label: '',
-    type: '',
-    name: '',
-    placeholder: '',
-    value: '',
-  };
+  ngOnInit() {
+    this.form.valueChanges.subscribe(() => {
+      this.validate();
+    });
+  }
 
-  form1fields: FormField[] = [
+  formFields: FORMFIELD[] = [
     {
       id: 'name',
       label: 'Name',
       type: 'text',
       name: 'name',
       placeholder: 'e.g. Stephen King',
-      value: '',
     },
     {
       id: 'email',
@@ -56,7 +48,6 @@ export class FormPersonnelComponent implements OnInit {
       type: 'email',
       name: 'email',
       placeholder: 'e.g. stephenking@lorem.com',
-      value: '',
     },
     {
       id: 'phone',
@@ -64,15 +55,11 @@ export class FormPersonnelComponent implements OnInit {
       type: 'text',
       name: 'phone',
       placeholder: 'e.g. +1 234 567 890',
-      value: '',
     },
   ];
 
-  nextStep() {
-    if (this.form.valid) {
-      console.log('Form Data:', this.form.value);
-    } else {
-      this.form.markAllAsTouched();
-    }
+  validate() {
+    const isValid = this.form.valid;
+    this.isValidated.emit(isValid);
   }
 }

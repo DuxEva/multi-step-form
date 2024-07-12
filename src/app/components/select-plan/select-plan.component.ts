@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-
-interface SelectPlan {
-  name: string;
-  imageUrl: string;
-  pricePerMonth: string;
-}
+import { SELECTEDPLAN } from '../../../types.common';
 
 @Component({
   selector: 'select-plan',
@@ -12,24 +7,28 @@ interface SelectPlan {
   styleUrl: './select-plan.component.css',
 })
 export class SelectPlanComponent {
-  selectPlan: SelectPlan = {
+  selectPlan: SELECTEDPLAN = {
+    id: 0,
     name: '',
     imageUrl: '',
     pricePerMonth: '',
   };
 
-  selectPlans: SelectPlan[] = [
+  selectPlans: SELECTEDPLAN[] = [
     {
+      id: 1,
       name: 'Arcade',
       imageUrl: '/assets/images/icon-arcade.svg',
       pricePerMonth: '$9/mo',
     },
     {
+      id: 2,
       name: 'Advanced',
       imageUrl: '/assets/images/icon-advanced.svg',
       pricePerMonth: '$12/mo',
     },
     {
+      id: 3,
       name: 'Pro',
       imageUrl: '/assets/images/icon-pro.svg',
       pricePerMonth: '$15/mo',

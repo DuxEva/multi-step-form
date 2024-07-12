@@ -13,7 +13,11 @@
       <div
         class="max-md:w-full bg-white max-md:rounded-lg max-md:shadow-lg max-md:border-2"
       >
-        <form-personnel *ngIf="counter === 1"></form-personnel>
+        <form-personnel
+          *ngIf="counter === 1"
+          (isValidated)="handleIsValidated($event)"
+          [triggerValidation]="triggerValidation"
+        ></form-personnel>
         <select-plan *ngIf="counter === 2"></select-plan>
         <add-ons *ngIf="counter === 3"></add-ons>
         <app-summary *ngIf="counter === 4"></app-summary>
@@ -21,14 +25,13 @@
           Thank you for signing up!
         </p>
       </div>
-
       <div
         class="w-full max-md:fixed max-md:bottom-0 max-md:right-0 max-md:h-16 max-md: max-md:bg-white flex items-center"
       >
         <div
-          class=" max-md:w-[90%] max-md:mx-auto flex justify-between items-center h-12 max-md:h-18 w-full mt-8 max-md:mt-0 {{
+          class="max-md:w-[90%] max-md:mx-auto flex justify-between items-center h-12 max-md:h-18 w-full mt-8 max-md:mt-0 {{
             counter === 5 ? 'hidden' : ''
-          }} "
+          }}"
         >
           <div class="block">
             <button
@@ -36,7 +39,7 @@
               *ngIf="counter !== 1"
               (click)="prevStep()"
             >
-              <span class="font-semibold text-xl text-gray-1 *">Go Back</span>
+              <span class="font-semibold text-xl text-gray-1">Go Back</span>
             </button>
           </div>
           <button
