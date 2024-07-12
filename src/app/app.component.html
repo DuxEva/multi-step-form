@@ -14,30 +14,34 @@
         class="max-md:w-full bg-white max-md:rounded-lg max-md:shadow-lg max-md:border-2"
       >
         <form-personnel *ngIf="counter === 1"></form-personnel>
-        <select-plan *ngIf="counter === 2"></select-plan>
-        <!-- <add-ons *ngIf="counter === 3"></add-ons>
-        <p *ngIf="counter === 4">thenk you</p> -->
+        <!-- <select-plan *ngIf="counter === 2"></select-plan> -->
+        <!-- <add-ons *ngIf="counter === 3"></add-ons> -->
+        <!-- <p *ngIf="counter === 4">thenk you</p> -->
       </div>
       <div
-        class="flex justify-between items-center h-12 max-md:h-18 w-full mt-8 max-md:mt-2 max-md:absolute max-md:bg-white  max-md:bottom-1 max-md:right-1  {{
-          counter === 4 ? 'hidden' : ''
-        }} "
+        class="w-full max-md:fixed max-md:bottom-0 max-md:right-0 max-md:h-16 max-md: max-md:bg-white flex items-center"
       >
-        <div class="block">
+        <div
+          class=" max-md:w-[90%] max-md:mx-auto flex justify-between items-center h-12 max-md:h-18 w-full mt-8 max-md:mt-0 {{
+            counter === 4 ? 'hidden' : ''
+          }} "
+        >
+          <div class="block">
+            <button
+              class="px-5 py-3 text-white rounded-lg"
+              *ngIf="counter !== 1"
+              (click)="prevStep()"
+            >
+              <span class="font-semibold text-xl text-gray-1 *">Go Back</span>
+            </button>
+          </div>
           <button
-            class="px-5 py-3 text-white rounded-lg"
-            *ngIf="counter !== 1"
-            (click)="prevStep()"
+            class="px-5 py-3 bg-denim-1 text-white rounded-lg"
+            (click)="nextStep()"
           >
-            <span class="font-semibold text-xl text-gray-1 *">Go Back</span>
+            <span class="font-semibold text-xl">Next Step</span>
           </button>
         </div>
-        <button
-          class="px-5 py-3 bg-denim-1 text-white rounded-lg"
-          (click)="nextStep()"
-        >
-          <span class="font-semibold text-xl">Next Step</span>
-        </button>
       </div>
     </div>
   </div>
