@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 
 interface FormField {
   id: string;
@@ -16,17 +20,17 @@ interface FormField {
   styleUrl: './form-personnel.component.css',
 })
 export class FormPersonnelComponent implements OnInit {
-  form: FormGroup | undefined;
+  form: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit() {
+  constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', Validators.required],
       phone: ['', Validators.required],
     });
   }
+
+  ngOnInit() {}
 
   formField: FormField = {
     id: '',
@@ -65,6 +69,10 @@ export class FormPersonnelComponent implements OnInit {
   ];
 
   nextStep() {
-    console.log('Next step');
+    if (this.form.valid) {
+      console.log('Form Data:', this.form.value);
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
 }

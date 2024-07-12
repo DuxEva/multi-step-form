@@ -12,6 +12,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FormPersonnelComponent } from './components/form-personnel/form-personnel.component';
 import { SelectPlanComponent } from './components/select-plan/select-plan.component';
 import { AddOnsComponent } from './components/add-ons/add-ons.component';
+import { SummaryComponent } from './components/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AddOnsComponent } from './components/add-ons/add-ons.component';
     FormPersonnelComponent,
     SelectPlanComponent,
     AddOnsComponent,
+    SummaryComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideClientHydration()],

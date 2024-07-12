@@ -7,14 +7,26 @@
   <p class="text-xl mt-5 max-md:mt-2 max-md:text-lg text-gray-1">
     Please provide your name, email address, and phone number.
   </p>
-  <form [formGroup]="form!" class="mt-5" action="">
+  <form [formGroup]="form" class="mt-5" action="">
     @for (formField of form1fields; track $index) {
     <div class="mb-5 max-sm:mb-3 max-md:mb-6">
-      <label class="block mb-3 text-denim-1" for="firstName">
-        {{ formField.label }}
-      </label>
+      <div class="w-full flex justify-between items-center mb-3">
+        <label class="block text-denim-1" for="firstName">
+          {{ formField.label }}
+        </label>
+        <p
+          *ngIf="
+            (form?.controls)![formField.name].invalid &&
+            (form?.controls)![formField.name].touched
+          "
+          class="text-red-500 text-right"
+        >
+          {{ formField.name }} is required
+        </p>
+      </div>
       <input
         class="outline-none border-2 w-full px-2 py-3 max-md:py-4 rounded-md max-sm:placeholder:text-sm placeholder:text-lg placeholder:font-semibold text-xl"
+        formControlName="formField.name"
         [type]="formField.type"
         [id]="formField.id"
         [name]="formField.name"
