@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 interface FormField {
   id: string;
@@ -14,7 +15,19 @@ interface FormField {
   templateUrl: './form-personnel.component.html',
   styleUrl: './form-personnel.component.css',
 })
-export class FormPersonnelComponent {
+export class FormPersonnelComponent implements OnInit {
+  form: FormGroup | undefined;
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required],
+    });
+  }
+
   formField: FormField = {
     id: '',
     label: '',
@@ -45,7 +58,7 @@ export class FormPersonnelComponent {
       id: 'phone',
       label: 'Phone Number',
       type: 'text',
-      name: 'lastName',
+      name: 'phone',
       placeholder: 'e.g. +1 234 567 890',
       value: '',
     },

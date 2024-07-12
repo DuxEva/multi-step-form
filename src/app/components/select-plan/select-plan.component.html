@@ -1,23 +1,27 @@
-<div class="w-full font-ubuntu">
+<div class="w-full font-ubuntu p-3 h-fit">
   <div class="">
-    <h1 class="text-4xl font-bold text-denim-1 font-ubuntu mt-5">
+    <h1
+      class="text-4xl max-md:text-3xl font-bold text-denim-1 font-ubuntu mt-5 max-md:mt-2"
+    >
       Select your plan
     </h1>
-    <p class="text-2xl mt-4 text-gray-1">
+    <p class="text-2xl max-md:text-lg mt-4 text-gray-1">
       You have the option of monthly or yearly billing.
     </p>
   </div>
-  <div class="w-full mt-14">
-    <div class="flex justify-between mt-10 w-full">
+  <div class="w-full mt-14 max-md:mt-5">
+    <div
+      class="flex justify-between items-center max-md:gap-6 max-md:flex-col mt-10 w-full"
+    >
       @for (selectPlan of selectPlans; track $index) {
       <div
-        class="h-48 w-40 border rounded-lg p-5 flex flex-col justify-between"
+        class="h-48 w-44 max-md:w-full border rounded-lg p-5 flex justify-between flex-col max-md:items-center max-md:flex-row max-md:justify-start max-md:gap-7 max-md:max-h-24 max-md:h-fit max-md:p-3"
       >
-        <div class="items-center h-24 w-24">
-          <img [src]="selectPlan.imageUrl" alt="" />
+        <div class="items-center h-12 w-12">
+          <img [src]="selectPlan.imageUrl" alt="" class="w-full" />
         </div>
         <div>
-          <h2 class="text-xl font-semibold text-denim-1 mb-1">
+          <h2 class="text-xl font-semibold text-denim-1 mb-1 max-md:mb-0">
             {{ selectPlan.name }}
           </h2>
           <p class="text-gray-1">{{ selectPlan.pricePerMonth }}</p>
