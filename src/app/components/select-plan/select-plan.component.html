@@ -5,23 +5,25 @@
     >
       Select your plan
     </h1>
-    <p class="text-2xl max-md:text-lg mt-4 text-gray-1">
+    <p class="text-xl mt-5 max-md:mt-2 max-md:text-lg text-gray-1">
       You have the option of monthly or yearly billing.
     </p>
   </div>
   <div class="w-full mt-14 max-md:mt-5">
     <div
-      class="flex justify-between items-center max-md:gap-6 max-md:flex-col mt-10 w-full"
+      class="flex gap-6 items-center max-md:gap-6 max-md:flex-col mt-5 w-full"
     >
       @for (selectPlan of selectPlans; track $index) {
       <div
-        class="h-48 w-44 max-md:w-full border rounded-lg p-5 flex justify-between flex-col max-md:items-center max-md:flex-row max-md:justify-start max-md:gap-7 max-md:max-h-24 max-md:h-fit max-md:p-3"
+        class="h-48 w-44 max-md:w-full border rounded-lg p-5 flex justify-between flex-col max-md:items-center max-md:flex-row max-md:justify-start max-md:gap-4 max-md:max-h-24 max-md:h-fit max-md:p-3"
       >
         <div class="items-center h-12 w-12">
           <img [src]="selectPlan.imageUrl" alt="" class="w-full" />
         </div>
         <div>
-          <h2 class="text-xl font-semibold text-denim-1 mb-1 max-md:mb-0">
+          <h2
+            class="text-xl max-md:text-lg font-semibold text-denim-1 mb-1 max-md:mb-0"
+          >
             {{ selectPlan.name }}
           </h2>
           <p class="text-gray-1">{{ selectPlan.pricePerMonth }}</p>
