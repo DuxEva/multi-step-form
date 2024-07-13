@@ -15,7 +15,10 @@
     >
       @for (selectPlan of selectPlans; track $index) {
       <div
-        class="h-48 w-44 max-md:w-full border rounded-lg p-5 flex justify-between flex-col max-md:items-center max-md:flex-row max-md:justify-start max-md:gap-4 max-md:max-h-24 max-md:h-fit max-md:p-3"
+        (click)="toggleSelectPlan($index)"
+        class="h-48 w-44 max-md:w-full border-2 rounded-lg p-5 flex justify-between flex-col max-md:items-center max-md:flex-row max-md:justify-start max-md:gap-4 max-md:max-h-24 max-md:h-fit max-md:p-3 cursor-pointer {{
+          selectPlan.isSelected ? 'border-purple-1' : 'border-gray-2'
+        }}"
       >
         <div class="items-center h-12 w-12">
           <img [src]="selectPlan.imageUrl" alt="" class="w-full" />
@@ -26,19 +29,29 @@
           >
             {{ selectPlan.name }}
           </h2>
-          <p class="text-gray-1">{{ selectPlan.pricePerMonth }}</p>
+          <p class="text-gray-1">
+            ${{
+              perMonth ? selectPlan.pricePerMonth : selectPlan.pricePerYear
+            }}/{{ perMonth ? "mo" : "yr" }}
+          </p>
+          <p class="mt-2 text-gray-1 text-sm {{perMonth? 'hidden': 'block'}}">2 months free</p>
         </div>
       </div>
       }
     </div>
     <div
+      (click)="togglePlanPeriod()"
       class="h-12 w-full border mt-10 bg-gray-2 rounded-lg flex justify-center items-center gap-4"
     >
       <h1>Monthly</h1>
       <div
-        class="w-14 h-7 bg-denim-1 p-1 flex items-center rounded-full cursor-pointer"
+        class="w-12 h-7 bg-denim-1 p-1 flex items-center rounded-full cursor-pointer"
       >
-        <div class="w-5 h-5 bg-white rounded-full"></div>
+        <div
+          class="w-5 h-5 bg-white rounded-full {{
+            perMonth ? 'translate-x-0' : 'translate-x-full'
+          }} transition-all duration-300"
+        ></div>
       </div>
       <h1>Yearly</h1>
     </div>

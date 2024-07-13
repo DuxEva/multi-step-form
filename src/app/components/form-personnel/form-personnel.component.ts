@@ -1,6 +1,14 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { FORMFIELD } from '../../../types.common';
+
+interface FormField {
+  id: string;
+  label: string;
+  type: string;
+  name: string;
+  placeholder: string;
+  value?: string;
+}
 
 @Component({
   selector: 'form-personnel',
@@ -34,7 +42,7 @@ export class FormPersonnelComponent implements OnInit {
     });
   }
 
-  formFields: FORMFIELD[] = [
+  formFields: FormField[] = [
     {
       id: 'name',
       label: 'Name',
