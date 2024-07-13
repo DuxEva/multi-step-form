@@ -11,7 +11,11 @@ export interface SELECTEDPLAN {
   id: number;
   name: string;
   imageUrl: string;
-  pricePerMonth: string;
+  pricePerMonth: number;
+  pricePerYear: number;
+  isSelected: boolean;
+  amountPerMonth?: number;
+  amountPerYear?: number;
 }
 
 export interface ADDON {

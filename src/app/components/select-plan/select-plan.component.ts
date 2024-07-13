@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StepCounterService } from '../../services/step-counter.service';
 
 interface SelectPlan {
   id: number;
@@ -34,7 +35,7 @@ export class SelectPlanComponent {
       imageUrl: '/assets/images/icon-arcade.svg',
       pricePerMonth: 9,
       pricePerYear: 90,
-      isSelected: false,
+      isSelected: true,
     },
     {
       id: 2,
@@ -54,12 +55,31 @@ export class SelectPlanComponent {
     },
   ];
 
+  constructor(private stepService: StepCounterService) {}
+
+  ngOnInit() {
+    const planData = this.stepService.getPlan();
+    this.perMonth = planData.isMonthly;
+    this.selectPlans.forEach((plan) => {
+      plan.isSelected = plan.id === planData.selectedPlan;
+    });
+  }
+
   toggleSelectPlan(index: number): void {
     this.selectPlans.forEach((plan) => (plan.isSelected = false));
     this.selectPlans[index].isSelected = true;
+    this.stepService.setPlan({
+      selectedPlan: this.selectPlans[index].id,
+      isMonthly: this.perMonth,
+    });
   }
 
   togglePlanPeriod(): void {
     this.perMonth = !this.perMonth;
+    const selectedPlan = this.selectPlans.find((plan) => plan.isSelected)?.id;
+    this.stepService.setPlan({
+      selectedPlan,
+      isMonthly: this.perMonth,
+    });
   }
 }

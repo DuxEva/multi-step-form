@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { StepCounterService } from '../../services/step-counter.service';
 
 interface FormField {
   id: string;
@@ -20,7 +21,10 @@ export class FormPersonnelComponent implements OnInit {
   @Output() isValidated = new EventEmitter<boolean>();
   @Input() triggerValidation: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private stepService: StepCounterService
+  ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -29,7 +33,6 @@ export class FormPersonnelComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.validate();
     this.triggerValidation.subscribe(() => {
       this.validate();
       this.form.markAllAsTouched();
@@ -37,6 +40,8 @@ export class FormPersonnelComponent implements OnInit {
   }
 
   ngOnInit() {
+    const personalInfo = this.stepService.getPersonalInfo();
+    this.form.patchValue(personalInfo);
     this.form.valueChanges.subscribe(() => {
       this.validate();
     });
@@ -68,6 +73,9 @@ export class FormPersonnelComponent implements OnInit {
 
   validate() {
     const isValid = this.form.valid;
+    if (isValid) {
+      this.stepService.setPersonalInfo(this.form.value);
+    }
     this.isValidated.emit(isValid);
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StepCounterService } from '../../services/step-counter.service';
 
 interface AddOn {
   isChosen: boolean;
@@ -19,6 +20,9 @@ export class AddOnsComponent {
     description: '',
     pricePerMonth: '',
   };
+
+  constructor(private stepService: StepCounterService) {}
+
   addOns: AddOn[] = [
     {
       isChosen: true,
@@ -40,7 +44,19 @@ export class AddOnsComponent {
     },
   ];
 
+  ngOnInit() {
+    const addOnsData: number[] = this.stepService.getAddOns();
+    console.log(addOnsData);
+    this.addOns.forEach((addOn, index) => {
+      addOn.isChosen = addOnsData.includes(index);
+    });
+  }
+
   toggleAddOn(index: number): void {
     this.addOns[index].isChosen = !this.addOns[index].isChosen;
+    const chosenAddOns: number[] = this.addOns
+      .map((addOn, i) => (addOn.isChosen ? i : null))
+      .filter((i): i is number => i !== null);
+    this.stepService.setAddOns(chosenAddOns);
   }
 }
