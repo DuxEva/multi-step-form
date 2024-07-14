@@ -46,7 +46,6 @@ export class AddOnsComponent {
 
   ngOnInit() {
     const addOnsData: number[] = this.stepService.getAddOns();
-    console.log(addOnsData);
     this.addOns.forEach((addOn, index) => {
       addOn.isChosen = addOnsData.includes(index);
     });

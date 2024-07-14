@@ -61,7 +61,7 @@ export class SelectPlanComponent {
     const planData = this.stepService.getPlan();
     this.perMonth = planData.isMonthly;
     this.selectPlans.forEach((plan) => {
-      plan.isSelected = plan.id === planData.selectedPlan;
+      plan.isSelected = plan.id === planData.selectedPlan.id;
     });
   }
 
@@ -69,16 +69,16 @@ export class SelectPlanComponent {
     this.selectPlans.forEach((plan) => (plan.isSelected = false));
     this.selectPlans[index].isSelected = true;
     this.stepService.setPlan({
-      selectedPlan: this.selectPlans[index].id,
+      selectedPlan: this.selectPlans[index],
       isMonthly: this.perMonth,
     });
   }
 
   togglePlanPeriod(): void {
     this.perMonth = !this.perMonth;
-    const selectedPlan = this.selectPlans.find((plan) => plan.isSelected)?.id;
+    const selectedPlan = this.selectPlans.find((plan) => plan.isSelected);
     this.stepService.setPlan({
-      selectedPlan,
+      selectedPlan: selectedPlan!,
       isMonthly: this.perMonth,
     });
   }

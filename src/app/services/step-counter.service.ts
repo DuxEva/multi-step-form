@@ -22,7 +22,14 @@ export class StepCounterService {
       phone: '',
     },
     plan: {
-      selectedPlan: 1,
+      selectedPlan: {
+        id: 1,
+        name: 'Arcade',
+        imageUrl: '/assets/images/icon-arcade.svg',
+        pricePerMonth: 9,
+        pricePerYear: 90,
+        isSelected: true,
+      },
       isMonthly: true,
     },
     addOns: [0],
@@ -48,8 +55,9 @@ export class StepCounterService {
     return this.formData.plan;
   }
 
-  setPlan(data: { selectedPlan: any; isMonthly: boolean }) {
-    this.formData.plan = data;
+  setPlan(data: { selectedPlan: SELECTEDPLAN; isMonthly: boolean }) {
+    this.formData.plan['selectedPlan'] = data.selectedPlan;
+    this.formData.plan['isMonthly'] = data.isMonthly;
   }
 
   getAddOns() {
