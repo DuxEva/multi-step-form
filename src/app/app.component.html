@@ -46,7 +46,7 @@
             </button>
           </div>
           <button
-            class="px-5 py-3 bg-denim-1 text-white rounded-lg"
+            class="px-5 py-3  text-white rounded-lg {{counter ===5 ? 'bg-purple-1': 'bg-denim-1'}} "
             (click)="nextStep()"
           >
             <span class="font-semibold text-xl">Next Step</span>
