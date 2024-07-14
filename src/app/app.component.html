@@ -21,9 +21,12 @@
         <select-plan *ngIf="counter === 2"></select-plan>
         <add-ons *ngIf="counter === 3"></add-ons>
         <app-summary *ngIf="counter === 4"></app-summary>
-        <p *ngIf="counter === 5" class="text-center text-2xl text-denim-1">
+        <app-thank-you
+          *ngIf="counter === 5"
+          class="text-center text-2xl text-denim-1"
+        >
           Thank you for signing up!
-        </p>
+        </app-thank-you>
       </div>
       <div
         class="w-full max-md:fixed max-md:bottom-0 max-md:right-0 max-md:h-16 max-md: max-md:bg-white flex items-center"

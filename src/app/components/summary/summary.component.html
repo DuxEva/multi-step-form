@@ -39,11 +39,11 @@
       *ngFor="let addOn of selectedAddOns"
     >
       <div>
-        <h2
-          class="text-xl max-md:text-lg font-semibold text-denim-1 mb-1 max-md:mb-0"
+        <p
+          class="max-md:text-lg font-light text-gray-1 mb-1 max-md:mb-0"
         >
           {{ addOn.type }}
-        </h2>
+        </p>
       </div>
       <p>
         {{ selectedPlan?.isMonthly ? addOn.pricePerMonth : addOn.pricePerYear }}

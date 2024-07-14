@@ -83,4 +83,48 @@ export class StepCounterService {
   setAddOns(data: any) {
     this.formData.addOns = data;
   }
+
+  resetForm() {
+    this.formData = {
+      personalInfo: {
+        name: '',
+        email: '',
+        phone: '',
+      },
+      plan: {
+        selectedPlan: {
+          id: 1,
+          name: 'Arcade',
+          imageUrl: '/assets/images/icon-arcade.svg',
+          pricePerMonth: 9,
+          pricePerYear: 90,
+          isSelected: true,
+        },
+        isMonthly: true,
+      },
+      addOns: [
+        {
+          isChosen: true,
+          type: 'Online service',
+          description: 'Access to multiplayer games',
+          pricePerMonth: '+$1/mo',
+          pricePerYear: '+$10/yr',
+        },
+        {
+          isChosen: false,
+          type: 'Larger storage',
+          description: 'Extra 1TB of cloud save',
+          pricePerMonth: '+$2/mo',
+          pricePerYear: '+$20/yr',
+        },
+        {
+          isChosen: false,
+          type: 'Customizable profile',
+          description: 'Custom theme on your profile',
+          pricePerMonth: '+$2/mo',
+          pricePerYear: '+$20/yr',
+        },
+      ],
+    };
+  }
 }

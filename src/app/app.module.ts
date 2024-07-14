@@ -13,6 +13,7 @@ import { FormPersonnelComponent } from './components/form-personnel/form-personn
 import { SelectPlanComponent } from './components/select-plan/select-plan.component';
 import { AddOnsComponent } from './components/add-ons/add-ons.component';
 import { SummaryComponent } from './components/summary/summary.component';
+import { ThankYouComponent } from './components/thank-you/thank-you.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SummaryComponent } from './components/summary/summary.component';
     SelectPlanComponent,
     AddOnsComponent,
     SummaryComponent,
+    ThankYouComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideClientHydration()],
