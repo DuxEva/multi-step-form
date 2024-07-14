@@ -1,0 +1,31 @@
+<div class="flex flex-col gap-7 max-md:flex-row max-md:gap-4">
+  <div
+    class="flex items-center w-full gap-5"
+    *ngFor="let step of steps; let i = index"
+  >
+    <div
+      class="w-12 h-12 rounded-full border-2 border-white grid place-content-center {{
+        counter > step.counter
+          ? counter === 4
+          : counter === step.counter
+          ? 'bg-skyBlue-2 border-skyBlue-2'
+          : ''
+      }}
+       "
+    >
+      <h1
+        class="text-4xl {{
+          counter === step.counter ? 'text-denim-1' : 'text-white'
+        }}"
+      >
+        {{ step.counter }}
+      </h1>
+    </div>
+    <div class="flex flex-col max-md:hidden">
+      <h1 class="text-lg uppercase text-gray-2">{{ step.step }}</h1>
+      <h1 class="text-lg uppercase font-semibold text-white">
+        {{ step.title }}
+      </h1>
+    </div>
+  </div>
+</div>

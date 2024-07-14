@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         skyBlue: {
           1: "#EFF5FF",
+          2: "#BEE2FD",
         },
         denim: {
           1: "#022959",

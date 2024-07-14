@@ -14,6 +14,7 @@ import { SelectPlanComponent } from './components/select-plan/select-plan.compon
 import { AddOnsComponent } from './components/add-ons/add-ons.component';
 import { SummaryComponent } from './components/summary/summary.component';
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
+import { SidebarItemComponent } from './components/sidebar/sidebar-item/sidebar-item.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ThankYouComponent } from './components/thank-you/thank-you.component';
     AddOnsComponent,
     SummaryComponent,
     ThankYouComponent,
+    SidebarItemComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideClientHydration()],
