@@ -5,11 +5,7 @@
   >
     <div
       class="w-12 h-12 rounded-full border-2 border-white grid place-content-center {{
-        counter > step.counter
-          ? counter === 4
-          : counter === step.counter
-          ? 'bg-skyBlue-2 border-skyBlue-2'
-          : ''
+        counter === step.counter ? 'bg-skyBlue-2 border-skyBlue-2' : ''
       }}
        "
     >
