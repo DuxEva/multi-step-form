@@ -23,4 +23,5 @@ export interface ADDON {
   type: string;
   description: string;
   pricePerMonth: string;
+  pricePerYear: string;
 }

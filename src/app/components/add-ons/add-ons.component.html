@@ -35,7 +35,9 @@
             </div>
           </div>
           <div>
-            <p class="text-purple-1 mb-1">{{ addOn.pricePerMonth }}</p>
+            <p class="text-purple-1 mb-1">
+              {{ plan?.isMonthly ? addOn.pricePerMonth : addOn.pricePerYear }}
+            </p>
           </div>
         </div>
         }

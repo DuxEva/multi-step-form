@@ -1,13 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ADDON, FORMFIELD, SELECTEDPLAN } from '../../types.common';
-
-interface FormFields {
-  formFields: FORMFIELD;
-  selectedPlan: SELECTEDPLAN;
-  addons: ADDON[];
-  perMonth: boolean;
-}
+import { SELECTEDPLAN } from '../../types.common';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +25,29 @@ export class StepCounterService {
       },
       isMonthly: true,
     },
-    addOns: [0],
+    addOns: [
+      {
+        isChosen: true,
+        type: 'Online service',
+        description: 'Access to multiplayer games',
+        pricePerMonth: '+$1/mo',
+        pricePerYear: '+$10/yr',
+      },
+      {
+        isChosen: false,
+        type: 'Larger storage',
+        description: 'Extra 1TB of cloud save',
+        pricePerMonth: '+$2/mo',
+        pricePerYear: '+$20/yr',
+      },
+      {
+        isChosen: false,
+        type: 'Customizable profile',
+        description: 'Custom theme on your profile',
+        pricePerMonth: '+$2/mo',
+        pricePerYear: '+$20/yr',
+      },
+    ],
   };
 
   currentStep$: Observable<number> = this.currentStep.asObservable();
@@ -61,6 +76,7 @@ export class StepCounterService {
   }
 
   getAddOns() {
+    console.log(this.formData.addOns);
     return this.formData.addOns;
   }
 

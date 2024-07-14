@@ -8,40 +8,57 @@
     Double-check everything looks OK before confirming.
   </p>
 
-  <div class="w-full mt-5 border-3 bg-gray-2 rounded-lg">
-    <div class="max-md:w-full flex justify-between items-center h-fit p-4">
-      <div class="">
+  <div class="w-full mt-5 border-3 bg-gray-3 rounded-lg">
+    <div
+      class="max-md:w-full flex justify-between items-center h-fit p-4"
+      *ngIf="selectedPlan"
+    >
+      <div>
         <h2
           class="text-xl max-md:text-lg font-semibold text-denim-1 mb-1 max-md:mb-0"
         >
-          <h1 class="text-denim-1 text-xl">Arcade (Monthly)</h1>
+          {{ selectedPlan.name }} ({{
+            selectedPlan.isMonthly ? "Monthly" : "Yearly"
+          }})
         </h2>
         <button class="text-gray-1">change</button>
       </div>
-      <p>$9/mo</p>
+      <p>
+        $
+        {{
+          selectedPlan.isMonthly
+            ? selectedPlan.pricePerMonth + "/mo"
+            : selectedPlan.pricePerYear + "/yr"
+        }}
+      </p>
     </div>
-    <div class="w-[95%] mx-auto h-[1px] bg-white"></div>
-    <div class="max-md:w-full flex justify-between items-center h-fit p-4">
-      <div class="">
+    <div class="w-[95%] mx-auto h-[1px] bg-gray-1"></div>
+
+    <div
+      class="max-md:w-full flex justify-between items-center h-fit p-4"
+      *ngFor="let addOn of selectedAddOns"
+    >
+      <div>
         <h2
           class="text-xl max-md:text-lg font-semibold text-denim-1 mb-1 max-md:mb-0"
         >
-          <h1 class="text-denim-1 text-xl">Arcade (Monthly)</h1>
+          {{ addOn.type }}
         </h2>
-        <button class="text-gray-1">change</button>
       </div>
-      <p>$9/mo</p>
+      <p>
+        {{ selectedPlan?.isMonthly ? addOn.pricePerMonth : addOn.pricePerYear }}
+      </p>
     </div>
-    <div class="max-md:w-full flex justify-between items-center h-fit p-4">
-      <div class="">
-        <h2
-          class="text-xl max-md:text-lg font-semibold text-denim-1 mb-1 max-md:mb-0"
-        >
-          <h1 class="text-denim-1 text-xl">Arcade (Monthly)</h1>
-        </h2>
-        <button class="text-gray-1">change</button>
-      </div>
-      <p>$9/mo</p>
+  </div>
+
+  <div class="max-md:w-full flex justify-between items-center h-fit p-4 mt-5">
+    <div>
+      <h2
+        class="text-xl max-md:text-lg font-semibold text-denim-1 mb-1 max-md:mb-0"
+      >
+        Total ({{ selectedPlan?.isMonthly ? "per month" : "per year" }})
+      </h2>
     </div>
+    <p>${{ totalPrice }} {{ selectedPlan?.isMonthly ? "/mo" : "/yr" }}</p>
   </div>
 </div>
