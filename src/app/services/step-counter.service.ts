@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { SELECTEDPLAN } from '../../types.common';
+import { ADDON, SELECTEDPLAN } from '../../types.common';
 
 @Injectable({
   providedIn: 'root',
@@ -76,11 +76,10 @@ export class StepCounterService {
   }
 
   getAddOns() {
-    console.log(this.formData.addOns);
     return this.formData.addOns;
   }
 
-  setAddOns(data: any) {
+  setAddOns(data: ADDON[]) {
     this.formData.addOns = data;
   }
 
