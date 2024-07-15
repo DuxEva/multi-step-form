@@ -8,8 +8,10 @@
     Please provide your name, email address, and phone number.
   </p>
   <form [formGroup]="form" class="mt-5" action="">
-    @for (formField of formFields; track $index) {
-    <div class="mb-5 max-sm:mb-3 max-md:mb-6">
+    <div
+      class="mb-5 max-sm:mb-3 max-md:mb-6"
+      *ngFor="let formField of formFields; let i = index"
+    >
       <div class="w-full flex justify-between items-center mb-3">
         <label class="block text-denim-1" for="firstName">
           {{ formField.label }}
@@ -17,7 +19,7 @@
         <p
           *ngIf="
             (form?.controls)![formField.name].invalid &&
-            (form?.controls)![formField.name].touched 
+            (form?.controls)![formField.name].touched
           "
           class="text-red-500 text-right"
         >
@@ -25,7 +27,13 @@
         </p>
       </div>
       <input
-        class="outline-none border-2 w-full px-2 py-3 max-md:py-4 rounded-md max-sm:placeholder:text-sm placeholder:text-lg placeholder:font-semibold text-xl"
+        class="{{
+          form.controls[formField.name].invalid &&
+          form.controls[formField.name].touched
+            ? 'border-red-500'
+            : 'border-gray-300'
+        }} focus:
+        outline-none border-2 w-full px-2 py-3 max-md:py-4 rounded-md max-sm:placeholder:text-sm placeholder:text-lg placeholder:font-semibold text-xl"
         formControlName="formField.name"
         [type]="formField.type"
         [id]="formField.id"
@@ -34,6 +42,5 @@
         [placeholder]="formField.placeholder"
       />
     </div>
-    }
   </form>
 </div>
