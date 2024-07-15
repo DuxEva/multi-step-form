@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { StepCounterService } from '../../services/step-counter.service';
 import { ADDON } from '../../../types.common';
 
@@ -16,10 +16,14 @@ export class SummaryComponent implements OnInit {
   } | null = null;
   selectedAddOns: ADDON[] = [];
   totalPrice: number = 0;
+  counter: number = 0;
 
   constructor(private stepService: StepCounterService) {}
 
   ngOnInit() {
+    this.stepService.currentStep$.subscribe((step) => {
+      this.counter = step;
+    });
     const planData = this.stepService.getPlan();
     this.selectedPlan = {
       name: planData.selectedPlan.name,
@@ -52,5 +56,9 @@ export class SummaryComponent implements OnInit {
       );
     });
     this.totalPrice = total;
+  }
+
+  gotToprev() {
+    this.stepService.updateStep(this.counter - 1);
   }
 }
